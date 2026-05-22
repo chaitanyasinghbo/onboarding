@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blue Ocean Onboarding (Assessments)</title>
+    <meta name="description" content="Blue Ocean onboarding: complete assessments (IQ, EQ, aptitude, psychometric, parent psyche) and upload results. Includes the reasoning behind each step." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lora:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+    <style>
+      :root{
+        --bg:#111111;
+        --panel:#151515;
+        --text:#ffffff;
+        --muted:rgba(255,255,255,.72);
+        --muted2:rgba(255,255,255,.55);
+        --border:rgba(255,255,255,.10);
+        --border2:rgba(255,255,255,.16);
+        --yellow:#FACC15;
+        --green:#16A34A;
+        --shadow: 0 16px 40px rgba(0,0,0,.35);
+        --radius:16px;
+        --radius2:22px;
+        --max: 1160px;
+      }
+      *{box-sizing:border-box}
+      body{
+        margin:0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: radial-gradient(900px 600px at 15% -10%, rgba(250,204,21,.10), transparent 55%),
+                    radial-gradient(900px 600px at 85% -10%, rgba(250,204,21,.07), transparent 55%),
+                    linear-gradient(180deg, #0b0b0b, var(--bg));
+        color:var(--text);
+        min-height:100vh;
+      }
+      a{color:inherit; text-decoration:none}
+      .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 110px;}
+      .topbar{
+        display:flex; align-items:center; justify-content:space-between; gap:14px;
+        padding:14px 14px;
+        border:1px solid var(--border);
+        background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        position: sticky; top: 10px; z-index: 5;
+        backdrop-filter: blur(10px);
+      }
+      .brand{display:flex; align-items:center; gap:12px}
+      .logo{
+        width:42px; height:42px; border-radius: 14px;
+        background: radial-gradient(circle at 30% 30%, rgba(250,204,21,.95), rgba(250,204,21,.45) 45%, rgba(250,204,21,.10) 70%),
+                    linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+        border:1px solid rgba(250,204,21,.35);
+        box-shadow: 0 10px 22px rgba(250,204,21,.12);
+      }
+      .brand h1{margin:0; font-size:14px; line-height:1.1; letter-spacing:.2px}
+      .brand small{display:block; margin-top:2px; color:var(--muted2); font-size:12px}
+      .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+      .btn{
+        border-radius: 14px;
+        border:1px solid var(--border2);
+        background: rgba(255,255,255,.03);
+        padding:10px 12px;
+        color:var(--text);
+        font-weight:700;
+        font-size:13px;
+        cursor:pointer;
+        display:inline-flex; gap:9px; align-items:center;
+      }
+      .btn:hover{border-color:rgba(250,204,21,.38)}
+      .btn.primary{
+        background: linear-gradient(180deg, rgba(250,204,21,.95), rgba(250,204,21,.80));
+        color:#111;
+        border-color: rgba(250,204,21,.55);
+      }
+      .btn.primary:hover{filter:brightness(1.02)}
+      .pill{
+        display:inline-flex; align-items:center; gap:8px;
+        border-radius:999px; padding:8px 10px;
+        border:1px solid rgba(250,204,21,.28);
+        background: rgba(250,204,21,.08);
+        color: var(--yellow);
+        font-weight:800; font-size:12px;
+      }
+
+      .hero{
+        margin:26px 0 18px;
+        display:grid;
+        grid-template-columns: 1.25fr .75fr;
+        gap:16px;
+        align-items:stretch;
+      }
+      .card{
+        border:1px solid var(--border);
+        background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+        border-radius: var(--radius2);
+        padding:18px;
+        box-shadow: var(--shadow);
+      }
+      .hero h2{margin:0 0 8px; font-size:28px; letter-spacing:-.6px}
+      .hero p{margin:0; color:var(--muted); line-height:1.6}
+      .quote{
+        margin-top:12px;
+        padding:12px 14px;
+        border-radius: 16px;
+        border:1px dashed rgba(250,204,21,.35);
+        background: rgba(250,204,21,.06);
+        color: var(--muted);
+      }
+      .quote em{font-family:Lora, serif; font-style:italic; color:rgba(255,255,255,.85)}
+      .grid{display:grid; grid-template-columns: 1fr; gap:14px; margin-top:14px}
+      .sectionTitle{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; margin:0 0 10px;}
+      .sectionTitle h3{margin:0; font-size:16px; letter-spacing:-.2px}
+      .sectionTitle span{color:var(--muted2); font-size:12px}
+
+      .row{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+      .row3{display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px}
+      @media (max-width: 900px){
+        .hero{grid-template-columns:1fr}
+        .row,.row3{grid-template-columns:1fr}
+        .actions{justify-content:flex-start}
+      }
+
+      .mini{
+        border:1px solid var(--border);
+        border-radius: 16px;
+        padding:12px;
+        background: rgba(0,0,0,.22);
+      }
+      .mini b{display:block; font-size:12px; color:var(--muted2); margin-bottom:8px}
+      .mini .big{font-size:20px; font-weight:900; letter-spacing:-.3px}
+      .tiny{font-size:12px; color:var(--muted2)}
+      .divider{height:1px; background: rgba(255,255,255,.10); margin:14px 0}
+
+      .taskCard{
+        border:1px solid rgba(255,255,255,.10);
+        border-radius: 20px;
+        background: rgba(0,0,0,.18);
+        padding:14px;
+      }
+      .taskTop{display:flex; justify-content:space-between; gap:12px; align-items:flex-start}
+      .tag{
+        display:inline-flex; align-items:center;
+        border-radius:999px; padding:6px 10px;
+        border:1px solid rgba(255,255,255,.12);
+        background: rgba(255,255,255,.02);
+        color: rgba(255,255,255,.78);
+        font-size:12px; font-weight:800;
+      }
+      .tag.student{border-color: rgba(250,204,21,.35); background: rgba(250,204,21,.08)}
+      .tag.parent{border-color: rgba(255,255,255,.14)}
+      .taskTitle{margin:0; font-size:15px; letter-spacing:-.2px}
+      .taskDesc{margin:8px 0 0; color: rgba(255,255,255,.76); line-height:1.55}
+      .taskWhy{
+        margin-top:10px;
+        padding:10px 12px;
+        border-radius: 16px;
+        border:1px solid rgba(255,255,255,.10);
+        background: rgba(255,255,255,.02);
+        color: rgba(255,255,255,.76);
+      }
+      .taskWhy b{color: var(--yellow)}
+      .taskActions{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; align-items:center}
+      .linkBtn{
+        display:inline-flex; align-items:center; gap:8px;
+        padding:10px 12px;
+        border-radius: 14px;
+        border:1px solid rgba(250,204,21,.35);
+        background: rgba(250,204,21,.10);
+        color: rgba(255,255,255,.95);
+        font-weight:850; font-size:13px;
+      }
+      .linkBtn:hover{border-color: rgba(250,204,21,.55)}
+      .ghostLink{
+        display:inline-flex; align-items:center; gap:8px;
+        padding:10px 12px;
+        border-radius: 14px;
+        border:1px solid rgba(255,255,255,.14);
+        background: rgba(255,255,255,.02);
+        color: rgba(255,255,255,.85);
+        font-weight:800; font-size:13px;
+      }
+      .ghostLink:hover{border-color: rgba(250,204,21,.28)}
+
+      .check{
+        display:flex; align-items:center; gap:10px;
+        padding:10px 12px;
+        border-radius: 14px;
+        border:1px solid rgba(255,255,255,.12);
+        background: rgba(255,255,255,.02);
+        cursor:pointer;
+        user-select:none;
+      }
+      .check.on{border-color: rgba(250,204,21,.55); background: rgba(250,204,21,.10)}
+      .box{
+        width:18px; height:18px; border-radius: 6px;
+        border:1px solid rgba(255,255,255,.22);
+        background: rgba(0,0,0,.18);
+        display:flex; align-items:center; justify-content:center;
+        font-weight:1000;
+      }
+      .check.on .box{border-color: rgba(250,204,21,.60); background: rgba(250,204,21,.22); color:#111}
+      .list{margin:0; padding-left:18px; color: rgba(255,255,255,.82); line-height:1.6}
+      .mutedBlock{
+        border:1px solid rgba(255,255,255,.10);
+        background: rgba(0,0,0,.20);
+        border-radius: 18px;
+        padding:14px;
+        color: rgba(255,255,255,.78);
+      }
+      .stickyBottom{
+        position:fixed; left:0; right:0; bottom:0;
+        background: rgba(10,10,10,.72);
+        border-top:1px solid rgba(255,255,255,.10);
+        backdrop-filter: blur(12px);
+        padding:12px 12px;
+        z-index: 10;
+      }
+      .stickyInner{
+        max-width:var(--max); margin:0 auto;
+        display:flex; gap:10px; align-items:center; justify-content:space-between;
+      }
+      .progressBar{
+        height:10px; width:220px; border-radius:999px;
+        border:1px solid rgba(255,255,255,.12);
+        background: rgba(255,255,255,.04);
+        overflow:hidden;
+      }
+      .progressFill{
+        height:100%;
+        background: linear-gradient(90deg, rgba(250,204,21,.95), rgba(250,204,21,.65));
+        width:0%;
+      }
+      @media (max-width: 640px){
+        .progressBar{width: 160px}
+      }
+      @media print{
+        body{background:#fff; color:#111}
+        .topbar,.stickyBottom{display:none !important}
+        .wrap{max-width: 920px; padding: 0}
+        .card,.taskCard,.mutedBlock{box-shadow:none; border:1px solid #ddd; background:#fff}
+        .linkBtn,.ghostLink{border:1px solid #ddd; background:#fff; color:#111}
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel" data-presets="env,react" src="./app.jsx"></script>
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(React.createElement(App));
+    </script>
+  </body>
+</html>
